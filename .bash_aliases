@@ -1,4 +1,5 @@
 alias reload='source ~/.bashrc'
+alias venv='source ~/.virtualenv/forservices/bin/activate'
 
 alias ll='ls -lah'
 alias l='ls -la'
