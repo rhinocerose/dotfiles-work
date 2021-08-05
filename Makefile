@@ -3,6 +3,7 @@ all: basics link starship
 basics:
     sudo apt update && sudo apt upgrade -y
     bash install/apt_install.sh install/aptlist
+    bash install/pip_install.sh install/piplist
     
 starship:
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
