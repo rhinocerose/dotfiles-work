@@ -13,3 +13,4 @@ link:
     ln -sfn ~/work-dotfiles/config/starship.toml ~/.config/starship.toml
     ln -sfn ~/work-dotfiles/config/git/.gitignore ~/.gitignore
     ln -sfn ~/work-dotfiles/config/git/.gitconfig ~/.gitconfig
+    ln -sfn ~/work-dotfiles/.bash_aliases ~/.bash_aliases
