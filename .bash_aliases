@@ -2,6 +2,7 @@ alias reload='source ~/.bashrc'
 
 alias ll='ls -lah'
 alias l='ls -la'
+alias rr='rm -rf'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias df='df -h' 
@@ -13,6 +14,9 @@ alias sysctls='sudo systemctl status'
 alias sysctlst='sudo systemctl start'
 alias sysctldr='sudo systemctl daemon-reload'
 
+function rr () {
+	builtin rm -rf "$1"
+}
 
 function cd () {
 	if [ -n "$1" ]; then
