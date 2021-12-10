@@ -1,5 +1,4 @@
 alias reload='source ~/.bashrc'
-alias venv='source ~/.virtualenv/forservices/bin/activate'
 
 alias ll='ls -lah'
 alias l='ls -la'
@@ -9,12 +8,6 @@ alias ...='cd ../..'
 alias df='df -h' 
 alias du='du -d 1 -h'
 
-alias sudo='sudo '
-alias sysctlr='sudo systemctl restart'
-alias sysctls='sudo systemctl status'
-alias sysctlst='sudo systemctl start'
-alias sysctldr='sudo systemctl daemon-reload'
-
 function cd () {
 	if [ -n "$1" ]; then
 		builtin cd "$@" && ll
@@ -23,4 +16,15 @@ function cd () {
 	fi
 }
 
-eval "$(starship init bash)"
+parse_git_branch() {
+	git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+}
+
+git_colour() {
+	if [[ $(git status -s 2>/dev/null) ]]; then
+		echo -e "\033[01;31m"
+	else
+		echo -e "\033[01;32m"
+	fi
+}
+export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\$(git_colour)\]\$(parse_git_branch)\[\e[00m\]$ "
